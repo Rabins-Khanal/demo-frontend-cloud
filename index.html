@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI SaaS MVP</title>
+</head>
+
+<body>
+    <h1>AI SaaS MVP</h1>
+
+    <button onclick="sendMessage()">
+        Send Request to Backend
+    </button>
+
+    <p id="response">No response yet</p>
+
+    <script>
+        async function sendMessage() {
+            const res = await fetch("http://localhost:8000/chat", {
+                method: "POST"
+            });
+
+            const data = await res.json();
+
+            document.getElementById("response").innerText =
+                data.response;
+        }
+    </script>
+</body>
+</html>
